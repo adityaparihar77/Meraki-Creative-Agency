@@ -1,4 +1,5 @@
 import { TrendingUp, Target, Palette, Megaphone, Search, FileText, Globe, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {
@@ -36,6 +37,12 @@ const services = [
 ];
 
 const Services = () => {
+  const navigate = useNavigate();
+
+  const handleServiceClick = () => {
+    navigate('/work');
+  };
+
   return (
     <section className="relative py-16 sm:py-24 bg-gradient-to-br from-background via-secondary/5 to-background overflow-hidden">
       {/* Decorative Background */}
@@ -67,7 +74,8 @@ const Services = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group relative p-6 sm:p-8 bg-white/80 backdrop-blur-sm rounded-2xl border-2 border-gray-200 hover:border-primary/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 animate-scale-in"
+                onClick={handleServiceClick}
+                className="group relative p-6 sm:p-8 bg-white/80 backdrop-blur-sm rounded-2xl border-2 border-gray-200 hover:border-primary/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 animate-scale-in cursor-pointer"
                 style={{ animationDelay: `${index * 0.08}s` }}
               >
                 {/* Gradient Accent on Hover */}
